@@ -1,0 +1,25 @@
+package com.example.lovable_clone.entity;
+
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.FieldDefaults;
+
+import java.time.Instant;
+
+@Getter
+@Setter
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class ChatSession {
+
+    Project project;
+
+    User user;
+
+    String title;
+    String avatarUrl;
+
+    Instant createdAt;
+    Instant updatedAt;
+    Instant deletedAt;
+}
