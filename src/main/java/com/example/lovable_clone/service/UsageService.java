@@ -1,0 +1,9 @@
+package com.example.lovable_clone.service;
+
+import com.example.lovable_clone.dto.subscription.UsageTodayResponse;
+
+public interface UsageService {
+    UsageTodayResponse getTodayUsageOfUser();
+
+    PlanLimitsResponse getCurrentSubscriptionLimitsOfUser(Long userId);
+}

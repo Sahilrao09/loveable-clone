@@ -1,0 +1,36 @@
+package com.example.lovable_clone.controller;
+
+import com.example.lovable_clone.dto.auth.*;
+import com.example.lovable_clone.service.AuthService;
+import com.example.lovable_clone.service.UserService;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/api/auth")
+@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
+public class AuthController {
+
+    AuthService authService;
+    UserService userService;
+
+    @PostMapping
+    public ResponseEntity<AuthResponse> signup(@RequestBody SignupRequest request) {
+        return ResponseEntity.ok(authService.signup(request));
+    }
+
+    @PostMapping
+    public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
+        return ResponseEntity.ok(authService.login(request));
+    }
+
+    @GetMapping("/me")
+    public ResponseEntity<ProfileResponse> getProfile() {
+        Long userId = 1L;
+        return ResponseEntity.ok(userService.getProfile(userId));
+    }
+}
